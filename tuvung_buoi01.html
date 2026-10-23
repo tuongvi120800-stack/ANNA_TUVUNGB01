@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ vựng Buổi 1 · 我的一天</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1F2D3A; --teal: #1F4E5F; --teal-2: #2C6577; --amber: #F2A541; --amber-soft: #FBE3BC;
+    --red: #D64933; --green: #3E8E63; --tint: #EAF2F4; --muted: #6F8E9B; --bg: #F7FAFB; --card: #FFFFFF;
+    --zh: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --vi: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--vi); line-height: 1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+  header { background: var(--teal); color: #fff; border-radius: 18px; padding: 22px 22px 18px; position: relative; overflow: hidden; }
+  header::after { content: ""; position: absolute; right: -60px; top: -70px; width: 150px; height: 150px; border-radius: 50%; background: var(--amber); opacity: .9; }
+  header .k { font-family: var(--zh); color: var(--amber-soft); font-size: 14px; letter-spacing: 1px; position: relative; z-index: 1; }
+  header h1 { margin: 2px 0 2px; font-family: var(--zh); font-size: 34px; position: relative; z-index: 1; }
+  header p { margin: 0; opacity: .9; position: relative; z-index: 1; font-size: 15px; }
+
+  .prep { background: var(--card); border: 1px solid #DCE7EB; border-radius: 14px; padding: 14px 18px; margin: 16px 0; }
+  .prep h2 { font-size: 16px; margin: 0 0 6px; color: var(--teal); }
+  .prep ol { margin: 0; padding-left: 20px; }
+  .prep li { margin: 4px 0; }
+  .prep .zh { font-family: var(--zh); font-weight: 700; color: var(--teal); }
+
+  .tabs { display: flex; gap: 8px; margin: 18px 0 12px; }
+  .tab { flex: 1; border: 2px solid var(--teal); background: #fff; color: var(--teal); border-radius: 12px; padding: 10px; font: 600 15px var(--vi); cursor: pointer; }
+  .tab.on { background: var(--teal); color: #fff; }
+
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .chip { border: 1px solid #C9D9DF; background: #fff; border-radius: 999px; padding: 6px 12px; font: 500 13px var(--vi); color: var(--ink); cursor: pointer; }
+  .chip.on { background: var(--amber-soft); border-color: var(--amber); }
+  .progress { flex: 1 1 100%; height: 8px; background: #DCE7EB; border-radius: 99px; overflow: hidden; }
+  .progress > i { display: block; height: 100%; width: 0; background: var(--green); transition: width .3s; }
+  .count { font-size: 13px; color: var(--muted); }
+
+  .scene { perspective: 1200px; }
+  .card { position: relative; width: 100%; height: 380px; transform-style: preserve-3d; transition: transform .5s; cursor: pointer; }
+  .card.flip { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; background: var(--card); box-shadow: 0 6px 24px rgba(31,78,95,.12); padding: 22px; display: flex; flex-direction: column; }
+  .front { align-items: center; justify-content: center; text-align: center; }
+  .front .big { font-family: var(--zh); font-size: 88px; font-weight: 700; color: var(--teal); line-height: 1.1; }
+  .front .vi-big { font-size: 28px; font-weight: 700; color: var(--teal); }
+  .front .hint { margin-top: 16px; color: var(--muted); font-size: 13px; }
+  .back { transform: rotateY(180deg); gap: 10px; overflow-y: auto; }
+  .back .top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .back .w { font-family: var(--zh); font-size: 44px; font-weight: 700; color: var(--teal); }
+  .back .py { font-size: 22px; color: var(--red); font-style: italic; }
+  .back .mean { font-size: 18px; font-weight: 600; }
+  .row { display: flex; gap: 8px; align-items: flex-start; }
+  .lab { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: #fff; background: var(--teal-2); border-radius: 6px; padding: 2px 8px; margin-top: 3px; }
+  .lab.a { background: var(--amber); color: var(--ink); }
+  .ex-zh { font-family: var(--zh); font-size: 20px; }
+  .ex-py { font-size: 14px; color: var(--muted); }
+  .ex-vi { font-size: 14px; }
+  .note { background: var(--tint); border-radius: 10px; padding: 8px 12px; font-size: 14px; }
+  .note .zh { font-family: var(--zh); font-weight: 700; }
+  .spk { border: none; background: var(--amber-soft); color: var(--ink); border-radius: 999px; padding: 4px 10px; font: 600 13px var(--vi); cursor: pointer; }
+
+  .ctrl { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 14px; }
+  .btn { border: none; border-radius: 12px; padding: 12px 8px; font: 600 15px var(--vi); cursor: pointer; background: var(--tint); color: var(--teal); }
+  .btn.no { background: #FBE1DC; color: var(--red); }
+  .btn.yes { background: #DDF0E5; color: var(--green); }
+  .btn.main { background: var(--teal); color: #fff; }
+  .nav { display: flex; justify-content: space-between; margin-top: 8px; }
+  .nav .btn { background: transparent; color: var(--muted); padding: 8px 4px; }
+  .kbd { text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .done { text-align: center; padding: 40px 20px; background: var(--card); border-radius: 20px; box-shadow: 0 6px 24px rgba(31,78,95,.12); }
+  .done .big { font-size: 22px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
+
+  .q { background: var(--card); border-radius: 20px; box-shadow: 0 6px 24px rgba(31,78,95,.12); padding: 22px; }
+  .q .ask { font-size: 14px; color: var(--muted); }
+  .q .prompt { font-size: 26px; font-weight: 700; color: var(--teal); margin: 6px 0 16px; min-height: 40px; }
+  .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .opt { border: 2px solid #DCE7EB; background: #fff; border-radius: 14px; padding: 14px 8px; font: 700 30px var(--zh); color: var(--ink); cursor: pointer; }
+  .opt small { display: block; font: 400 14px var(--vi); color: var(--muted); height: 20px; }
+  .opt.right { border-color: var(--green); background: #DDF0E5; }
+  .opt.wrong { border-color: var(--red); background: #FBE1DC; }
+  .opt:disabled { cursor: default; }
+  .feedback { min-height: 24px; margin-top: 12px; font-size: 15px; }
+  .score { text-align: center; }
+  .score .num { font-size: 56px; font-weight: 700; color: var(--teal); }
+  .miss { text-align: left; margin-top: 12px; }
+  .miss div { padding: 6px 0; border-bottom: 1px solid #E5EEF1; }
+  .warn { font-size: 13px; color: var(--red); margin-top: 8px; display: none; }
+  footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 28px; }
+  @media (max-width: 480px) {
+    .card { height: 430px; }
+    .front .big { font-size: 72px; }
+    .back .w { font-size: 36px; }
+    .ctrl { grid-template-columns: 1fr 1fr; }
+    .ctrl .main { grid-column: 1 / -1; order: -1; }
+    .kbd { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="k">第一课 · 生词</div>
+    <h1>我的一天</h1>
+    <p>Từ vựng Buổi 1 · xem trước khi vào lớp</p>
+  </header>
+
+  <section class="prep">
+    <h2>Trước buổi học, chị làm 3 việc này</h2>
+    <ol>
+      <li>Học hết 10 thẻ từ, bấm 🔊 để nghe, đọc to theo.</li>
+      <li>Làm phần <b>Kiểm tra nhanh</b> cho đến khi đúng ít nhất 8/10.</li>
+      <li>Nghĩ sẵn câu trả lời (không cần viết): <span class="zh">你平时几点起床？每天上班要多长时间？你去过哪些地方？</span></li>
+    </ol>
+  </section>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="cards">Thẻ từ</button>
+    <button class="tab" data-tab="quiz">Kiểm tra nhanh</button>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <section id="cards">
+    <div class="bar">
+      <button class="chip on" id="modeZh">Mặt trước: chữ Hán</button>
+      <button class="chip" id="modeVi">Mặt trước: nghĩa tiếng Việt</button>
+      <button class="chip" id="onlyNew">Chỉ học từ chưa nhớ</button>
+      <button class="chip" id="shuffle">Trộn thẻ</button>
+      <button class="chip" id="slow">Đọc chậm</button>
+      <div class="progress"><i id="prog"></i></div>
+      <span class="count" id="count"></span>
+    </div>
+    <div id="cardArea"></div>
+    <div class="warn" id="noVoice">Trình duyệt này chưa có giọng đọc tiếng Trung. Chị thử mở bằng Chrome hoặc Safari.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" hidden>
+    <div id="quizArea"></div>
+  </section>
+
+  <footer>Buổi 1 · 我的一天 · chữ giản thể</footer>
+</div>
+
+<script>
+const WORDS = [
+  { w: "作息", py: "zuòxī", vi: "giờ giấc sinh hoạt", col: "作息时间", ex: "我的作息时间很固定。", exPy: "Wǒ de zuòxī shíjiān hěn gùdìng.", exVi: "Giờ giấc sinh hoạt của tôi rất cố định.", rad: "作: bộ 亻(người) · 息: bộ 心 (tim)" },
+  { w: "规律", py: "guīlǜ", vi: "điều độ, có quy luật", col: "很有规律 · 不规律", ex: "我的作息不太规律。", exPy: "Wǒ de zuòxī bú tài guīlǜ.", exVi: "Giờ giấc sinh hoạt của tôi không điều độ lắm.", rad: "律: bộ 彳 (bước chân)" },
+  { w: "通勤", py: "tōngqín", vi: "đi lại đi làm", col: "通勤时间", ex: "我每天通勤一个小时。", exPy: "Wǒ měitiān tōngqín yí ge xiǎoshí.", exVi: "Mỗi ngày tôi đi làm mất một tiếng.", rad: "通: bộ 辶 (đi) · 勤: bộ 力 (sức)" },
+  { w: "赶", py: "gǎn", vi: "vội cho kịp", col: "赶地铁 · 赶时间", ex: "早上我常常得赶地铁。", exPy: "Zǎoshang wǒ chángcháng děi gǎn dìtiě.", exVi: "Buổi sáng tôi thường phải vội cho kịp tàu điện.", rad: "赶: bộ 走 (đi, chạy) → chạy cho kịp" },
+  { w: "熬夜", py: "áoyè", vi: "thức khuya", col: "熬夜加班", ex: "我很少熬夜。", exPy: "Wǒ hěn shǎo áoyè.", exVi: "Tôi ít khi thức khuya.", rad: "熬: bộ 灬 (lửa) → ninh lâu, “ninh” qua đêm", tip: "Động từ li hợp: 我昨天熬夜了。/ 我熬了一夜。" },
+  { w: "匆忙", py: "cōngmáng", vi: "vội vã", col: "匆匆忙忙地…", ex: "我匆匆忙忙地吃了早饭。", exPy: "Wǒ cōngcōngmángmáng de chīle zǎofàn.", exVi: "Tôi vội vội vàng vàng ăn sáng.", rad: "忙: bộ 忄 (tim) → trong lòng bận" },
+  { w: "准时", py: "zhǔnshí", vi: "đúng giờ", col: "准时到 · 准时下班", ex: "我一般八点准时到公司。", exPy: "Wǒ yìbān bā diǎn zhǔnshí dào gōngsī.", exVi: "Tôi thường đến công ty đúng 8 giờ.", rad: "准: bộ 冫 (băng, 2 chấm) · 时: bộ 日 (mặt trời)" },
+  { w: "顺便", py: "shùnbiàn", vi: "tiện thể", col: "下班顺便…", ex: "下班以后我顺便去超市。", exPy: "Xiàbān yǐhòu wǒ shùnbiàn qù chāoshì.", exVi: "Tan làm tôi tiện thể ghé siêu thị.", rad: "便: bộ 亻(người)", tip: "便 ở đây đọc biàn, trong 便宜 đọc pián." },
+  { w: "充实", py: "chōngshí", vi: "bận rộn mà có ý nghĩa", col: "过得很充实", ex: "这个周末过得很充实。", exPy: "Zhège zhōumò guò de hěn chōngshí.", exVi: "Cuối tuần này trôi qua rất bận rộn mà ý nghĩa.", rad: "实: bộ 宀 (mái nhà)" },
+  { w: "难得", py: "nándé", vi: "hiếm khi có", col: "难得休息 · 难得的机会", ex: "我难得休息一天。", exPy: "Wǒ nándé xiūxi yì tiān.", exVi: "Hiếm lắm tôi mới được nghỉ một ngày.", rad: "得: bộ 彳 (bước chân)" },
+];
+
+// ---------- storage (optional) ----------
+const KEY = "buoi01_known";
+function loadKnown() { try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch (e) { return new Set(); } }
+function saveKnown() { try { localStorage.setItem(KEY, JSON.stringify([...known])); } catch (e) {} }
+let known = loadKnown();
+
+// ---------- speech ----------
+let slow = false, zhVoice = null;
+function pickVoice() {
+  if (!("speechSynthesis" in window)) return;
+  const vs = speechSynthesis.getVoices();
+  zhVoice = vs.find(v => /zh[-_]CN/i.test(v.lang)) || vs.find(v => /^zh/i.test(v.lang)) || null;
+}
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text) {
+  if (!("speechSynthesis" in window)) { document.getElementById("noVoice").style.display = "block"; return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "zh-CN"; if (zhVoice) u.voice = zhVoice;
+  u.rate = slow ? 0.6 : 0.9;
+  speechSynthesis.speak(u);
+  setTimeout(() => { if (!zhVoice && speechSynthesis.getVoices().length && !speechSynthesis.getVoices().some(v => /^zh/i.test(v.lang))) document.getElementById("noVoice").style.display = "block"; }, 400);
+}
+
+// ---------- flashcards ----------
+let frontZh = true, onlyNew = false, order = WORDS.map((_, i) => i), pos = 0;
+const $ = id => document.getElementById(id);
+function deck() { return onlyNew ? order.filter(i => !known.has(i)) : order; }
+function esc(s) { return s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+
+function renderCard() {
+  const d = deck();
+  $("prog").style.width = (known.size / WORDS.length * 100) + "%";
+  $("count").textContent = `Đã nhớ ${known.size}/${WORDS.length}`;
+  if (!d.length) {
+    $("cardArea").innerHTML = `<div class="done"><div class="big">Chị đã nhớ hết 10 từ! 🎉</div><p>Chuyển sang <b>Kiểm tra nhanh</b> để thử lại nhé.</p><button class="btn main" id="reset">Học lại từ đầu</button></div>`;
+    $("reset").onclick = () => { known.clear(); saveKnown(); onlyNew = false; $("onlyNew").classList.remove("on"); pos = 0; renderCard(); };
+    return;
+  }
+  if (pos >= d.length) pos = 0;
+  const i = d[pos], x = WORDS[i];
+  const front = frontZh
+    ? `<div class="big">${x.w}</div><div class="hint">Chạm vào thẻ để lật</div>`
+    : `<div class="vi-big">${esc(x.vi)}</div><div class="hint">Chữ Hán là gì? Chạm để lật</div>`;
+  $("cardArea").innerHTML = `
+    <div class="scene"><div class="card" id="card">
+      <div class="face front">${front}</div>
+      <div class="face back">
+        <div class="top"><span class="w">${x.w}</span><span class="py">${x.py}</span>
+          <button class="spk" data-say="${x.w}">🔊 từ</button></div>
+        <div class="mean">${esc(x.vi)}</div>
+        <div class="row"><span class="lab">Kết hợp</span><span class="ex-zh" style="font-size:17px">${x.col}</span></div>
+        <div class="row"><span class="lab">Ví dụ</span><div>
+          <div class="ex-zh">${x.ex} <button class="spk" data-say="${x.ex}">🔊 câu</button></div>
+          <div class="ex-py">${x.exPy}</div><div class="ex-vi">${esc(x.exVi)}</div></div></div>
+        <div class="row"><span class="lab a">Bộ thủ</span><span style="font-size:14px">${x.rad}</span></div>
+        ${x.tip ? `<div class="note">💡 ${x.tip}</div>` : ""}
+      </div>
+    </div></div>
+    <div class="ctrl">
+      <button class="btn no" id="bNo">✗ Chưa nhớ</button>
+      <button class="btn main" id="bFlip">Lật thẻ</button>
+      <button class="btn yes" id="bYes">✓ Đã nhớ</button>
+    </div>
+    <div class="nav"><button class="btn" id="bPrev">← Thẻ trước</button><span class="count">${pos + 1} / ${d.length}</span><button class="btn" id="bNext">Thẻ sau →</button></div>
+    <div class="kbd">Bàn phím: Space = lật · ← → = chuyển thẻ</div>`;
+  const card = $("card");
+  card.onclick = e => { if (e.target.closest(".spk")) return; card.classList.toggle("flip"); if (card.classList.contains("flip")) say(x.w); };
+  document.querySelectorAll(".spk").forEach(b => b.onclick = e => { e.stopPropagation(); say(b.dataset.say); });
+  $("bFlip").onclick = () => { card.classList.toggle("flip"); if (card.classList.contains("flip")) say(x.w); };
+  $("bYes").onclick = () => { known.add(i); saveKnown(); if (!onlyNew) pos++; renderCard(); };
+  $("bNo").onclick = () => { known.delete(i); saveKnown(); pos++; renderCard(); };
+  $("bPrev").onclick = () => { pos = (pos - 1 + d.length) % d.length; renderCard(); };
+  $("bNext").onclick = () => { pos = (pos + 1) % d.length; renderCard(); };
+}
+document.addEventListener("keydown", e => {
+  if ($("cards").hidden || !$("card")) return;
+  if (e.code === "Space") { e.preventDefault(); $("bFlip").click(); }
+  if (e.key === "ArrowRight") $("bNext").click();
+  if (e.key === "ArrowLeft") $("bPrev").click();
+});
+$("modeZh").onclick = () => { frontZh = true; $("modeZh").classList.add("on"); $("modeVi").classList.remove("on"); renderCard(); };
+$("modeVi").onclick = () => { frontZh = false; $("modeVi").classList.add("on"); $("modeZh").classList.remove("on"); renderCard(); };
+$("onlyNew").onclick = () => { onlyNew = !onlyNew; $("onlyNew").classList.toggle("on", onlyNew); pos = 0; renderCard(); };
+$("shuffle").onclick = () => { order = shuffle(order); pos = 0; renderCard(); };
+$("slow").onclick = () => { slow = !slow; $("slow").classList.toggle("on", slow); };
+
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+// ---------- quiz ----------
+let qs = [], qi = 0, score = 0, missed = [];
+function startQuiz() {
+  qs = shuffle(WORDS.map((_, i) => i)).map((i, k) => ({ i, type: k % 2 ? "listen" : "meaning", opts: shuffle([i, ...shuffle(WORDS.map((_, j) => j).filter(j => j !== i)).slice(0, 3)]) }));
+  qi = 0; score = 0; missed = []; renderQ();
+}
+function renderQ() {
+  if (qi >= qs.length) {
+    const msg = score >= 8 ? "Rất tốt, chị đã sẵn sàng vào lớp!" : "Chị ôn lại các từ dưới đây rồi làm lại nhé.";
+    $("quizArea").innerHTML = `<div class="q score"><div class="ask">Kết quả</div><div class="num">${score}/${qs.length}</div><p>${msg}</p>
+      ${missed.length ? `<div class="miss">${missed.map(i => `<div><b style="font-family:var(--zh);font-size:20px">${WORDS[i].w}</b> ${WORDS[i].py} · ${esc(WORDS[i].vi)}</div>`).join("")}</div>` : ""}
+      <button class="btn main" id="again" style="margin-top:16px;width:100%">Làm lại</button></div>`;
+    $("again").onclick = startQuiz; return;
+  }
+  const q = qs[qi], x = WORDS[q.i];
+  const prompt = q.type === "meaning"
+    ? `<div class="ask">Câu ${qi + 1}/${qs.length} · Chọn chữ Hán có nghĩa:</div><div class="prompt">${esc(x.vi)}</div>`
+    : `<div class="ask">Câu ${qi + 1}/${qs.length} · Nghe và chọn chữ Hán đúng:</div><div class="prompt"><button class="btn main" id="play">🔊 Nghe lại</button></div>`;
+  $("quizArea").innerHTML = `<div class="q">${prompt}
+    <div class="opts">${q.opts.map(o => `<button class="opt" data-o="${o}">${WORDS[o].w}<small></small></button>`).join("")}</div>
+    <div class="feedback" id="fb"></div>
+    <button class="btn main" id="nextQ" style="width:100%;margin-top:10px" hidden>Câu tiếp →</button></div>`;
+  if (q.type === "listen") { $("play").onclick = () => say(x.w); setTimeout(() => say(x.w), 250); }
+  document.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    const o = +b.dataset.o;
+    document.querySelectorAll(".opt").forEach(bb => { bb.disabled = true; bb.querySelector("small").textContent = WORDS[+bb.dataset.o].py; if (+bb.dataset.o === q.i) bb.classList.add("right"); });
+    if (o === q.i) { score++; $("fb").innerHTML = `✓ Đúng rồi! <b style="font-family:var(--zh)">${x.w}</b> ${x.py}: ${esc(x.vi)}`; }
+    else { b.classList.add("wrong"); missed.push(q.i); $("fb").innerHTML = `✗ Đáp án là <b style="font-family:var(--zh)">${x.w}</b> ${x.py}: ${esc(x.vi)}`; }
+    say(x.w);
+    $("nextQ").hidden = false; $("nextQ").onclick = () => { qi++; renderQ(); };
+  });
+}
+
+// ---------- tabs ----------
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
+  $("cards").hidden = t.dataset.tab !== "cards";
+  $("quiz").hidden = t.dataset.tab !== "quiz";
+  if (t.dataset.tab === "quiz") startQuiz();
+});
+
+renderCard();
+</script>
+</body>
+</html>
